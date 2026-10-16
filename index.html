@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, viewport-fit=cover"
+        />
+        <title>Lavanderías Carapari</title>
+        <style>
+            :root {
+                --bg: #f4f7fa;
+                --card: #fff;
+                --tx: #14212b;
+                --mut: #5d6b78;
+                --pri: #0b79c4;
+                --bd: #d9e1e8;
+                --dg: #c0392b;
+                --ok: #1e8e5a;
+                color-scheme: light;
+                box-sizing: border-box;
+                padding-top: env(safe-area-inset-top, 0px);
+                padding-bottom: env(safe-area-inset-bottom, 0px);
+            }
+            @media (prefers-color-scheme: dark) {
+                :root:not([data-theme="light"]) {
+                    --bg: #0f1820;
+                    --card: #18232d;
+                    --tx: #e8eef3;
+                    --mut: #93a3b1;
+                    --pri: #4aa8e8;
+                    --bd: #2b3a47;
+                    --dg: #ef7a6c;
+                    --ok: #4cc58d;
+                    color-scheme: dark;
+                }
+            }
+            :root[data-theme="dark"] {
+                --bg: #0f1820;
+                --card: #18232d;
+                --tx: #e8eef3;
+                --mut: #93a3b1;
+                --pri: #4aa8e8;
+                --bd: #2b3a47;
+                --dg: #ef7a6c;
+                --ok: #4cc58d;
+                color-scheme: dark;
+            }
+            html {
+                scroll-padding-top: env(safe-area-inset-top, 0px);
+            }
+            * {
+                box-sizing: border-box;
+            }
+            body {
+                margin: 0;
+                background: var(--bg);
+                color: var(--tx);
+                font: 15px/1.45 system-ui, -apple-system, "Segoe UI", Roboto,
+                    sans-serif;
+            }
+            header {
+                background: var(--pri);
+                color: #fff;
+                padding: 12px 16px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 8px;
+                flex-wrap: wrap;
+            }
+            header b {
+                font-size: 17px;
+            }
+            header span {
+                font-size: 13px;
+                opacity: 0.9;
+            }
+            nav {
+                display: flex;
+                gap: 6px;
+                padding: 10px 12px;
+                overflow-x: auto;
+                background: var(--card);
+                border-bottom: 1px solid var(--bd);
+            }
+            nav button {
+                white-space: nowrap;
+            }
+            main {
+                max-width: 1000px;
+                margin: 0 auto;
+                padding: 14px;
+            }
+            .card {
+                background: var(--card);
+                border: 1px solid var(--bd);
+                border-radius: 10px;
+                padding: 14px;
+                margin-bottom: 14px;
+            }
+            button,
+            input,
+            select {
+                font: inherit;
+                color: var(--tx);
+            }
+            button {
+                background: var(--card);
+                border: 1px solid var(--bd);
+                border-radius: 8px;
+                padding: 7px 12px;
+                cursor: pointer;
+            }
+            button.p,
+            nav button.on {
+                background: var(--pri);
+                border-color: var(--pri);
+                color: #fff;
+            }
+            button.d {
+                color: var(--dg);
+            }
+            input,
+            select {
+                width: 100%;
+                padding: 8px;
+                border: 1px solid var(--bd);
+                border-radius: 8px;
+                background: var(--bg);
+            }
+            label {
+                display: block;
+                font-size: 13px;
+                color: var(--mut);
+                margin-bottom: 10px;
+            }
+            .g {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 0 12px;
+            }
+            .bar {
+                display: flex;
+                gap: 8px;
+                margin-bottom: 12px;
+                flex-wrap: wrap;
+            }
+            .bar input {
+                flex: 1;
+                min-width: 140px;
+            }
+            .w {
+                overflow-x: auto;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                font-size: 14px;
+            }
+            th,
+            td {
+                text-align: left;
+                padding: 8px;
+                border-bottom: 1px solid var(--bd);
+                white-space: nowrap;
+            }
+            th {
+                color: var(--mut);
+                font-weight: 600;
+            }
+            .k {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 10px;
+                margin-bottom: 14px;
+            }
+            .k div {
+                background: var(--bg);
+                border-radius: 8px;
+                padding: 10px;
+            }
+            .k b {
+                display: block;
+                font-size: 20px;
+            }
+            .k small {
+                color: var(--mut);
+            }
+            .lg {
+                max-width: 360px;
+                margin: 8vh auto;
+            }
+            .err {
+                color: var(--dg);
+                font-size: 13px;
+            }
+            .mut {
+                color: var(--mut);
+                font-size: 13px;
+            }
+            html {
+                scroll-behavior: smooth;
+            }
+            .ok {
+                color: var(--ok);
+            }
+            .top {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 10px;
+                flex-wrap: wrap;
+                padding: 12px 18px;
+                background: var(--card);
+                border-bottom: 1px solid var(--bd);
+            }
+            .top b {
+                font-size: 18px;
+                color: var(--pri);
+            }
+            .top div {
+                display: flex;
+                gap: 6px;
+                align-items: center;
+                flex-wrap: wrap;
+            }
+            .top a {
+                color: var(--tx);
+                text-decoration: none;
+                padding: 6px 10px;
+                border-radius: 8px;
+            }
+            .top a:hover {
+                background: var(--bg);
+            }
+            .hero {
+                background: linear-gradient(135deg, #0b79c4, #074f80);
+                color: #fff;
+                padding: 60px 16px;
+                text-align: center;
+            }
+            .hero h1 {
+                font-size: clamp(26px, 6vw, 40px);
+                margin: 0 0 10px;
+            }
+            .hero p {
+                max-width: 520px;
+                margin: 0 auto 22px;
+                opacity: 0.95;
+            }
+            .hero button {
+                padding: 10px 22px;
+                font-weight: 600;
+                margin: 4px;
+                background: #fff;
+                color: #074f80;
+                border-color: #fff;
+            }
+            .hero button.o {
+                background: transparent;
+                color: #fff;
+            }
+            .feat {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+                gap: 10px;
+                margin-bottom: 18px;
+            }
+            .feat div {
+                background: var(--card);
+                border: 1px solid var(--bd);
+                border-radius: 10px;
+                padding: 14px;
+                text-align: center;
+            }
+            .feat span {
+                font-size: 26px;
+                display: block;
+            }
+            footer {
+                text-align: center;
+                color: var(--mut);
+                font-size: 13px;
+                padding: 18px;
+            }
+            @media print {
+                header,
+                nav,
+                .bar,
+                button {
+                    display: none !important;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="app"></div>
+        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+        <script>
+            // === CONFIGURA AQUÍ TU PROYECTO SUPABASE (Project Settings > API) ===
+            const CONFIG={URL:'https://zdhufihuplxqrhaauqjn.supabase.co',KEY:'sb_publishable_vMb6dlCr2b_BSkS8vejzcg_4yZOTwQx'};
+            let LS={};try{LS=JSON.parse(localStorage.getItem('lav_cfg'))||{}}catch(e){}
+            const SUPA_URL=LS.URL||CONFIG.URL,SUPA_KEY=LS.KEY||CONFIG.KEY;
+            let sb=null,CFG_ERR='';try{sb=supabase.createClient(SUPA_URL,SUPA_KEY)}catch(e){CFG_ERR='No se pudo cargar Supabase ('+e.message+'). Revisa tu internet y los valores de SUPA_URL y SUPA_KEY.'}
+            const M={
+            clientes:{t:'Clientes',f:[['nombre','Nombre','text'],['ci','CI / NIT','text'],['telefono','Teléfono','tel'],['email','Correo','email']]},
+            vehiculos:{t:'Vehículos',f:[['placa','Placa','text'],['marca','Marca / modelo','text'],['tipo','Tipo','sel:Auto,Camioneta,Minibús,Moto,Camión'],['cliente','Cliente','ref:clientes']]},
+            servicios:{t:'Servicios',f:[['nombre','Servicio','text'],['precio','Precio (Bs)','number'],['duracion','Duración (min)','number']]},
+            reservas:{t:'Reservas',f:[['cliente','Cliente','ref:clientes'],['vehiculo','Vehículo','ref:vehiculos'],['servicio','Servicio','ref:servicios'],['fecha','Fecha','date'],['hora','Hora','time'],['estado','Estado','sel:Pendiente,Confirmada,Cancelada,Atendida']]},
+            trabajos:{t:'Servicios realizados',f:[['vehiculo','Vehículo','ref:vehiculos'],['servicio','Servicio','ref:servicios'],['fecha','Fecha','date'],['empleado','Atendido por','text'],['estado','Estado','sel:En proceso,Terminado,Entregado']]},
+            pagos:{t:'Pagos',f:[['cliente','Cliente','ref:clientes'],['servicio','Servicio','ref:servicios'],['monto','Monto (Bs)','number'],['metodo','Método','sel:Efectivo,QR,Transferencia'],['fecha','Fecha','date']]}};
+            const ROL={admin:{m:[...Object.keys(M),'reportes'],del:1},empleado:{m:Object.keys(M),del:0},cliente:{m:['reservas'],del:0}};
+            let db={clientes:[],vehiculos:[],servicios:[],reservas:[],trabajos:[],pagos:[]},S={u:null,mod:'clientes',q:'',edit:null,err:''};
+            const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+            const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+            const today=()=>new Date().toISOString().slice(0,10);
+            async function loadAll(){S.err='';for(const t of Object.keys(db)){const{data,error}=await sb.from(t).select('*').order('created_at');if(error){S.err=error.message;break}db[t]=data}render()}
+            function lab(c,id){const x=db[c].find(i=>i.id==id);if(!x)return '—';return c=='vehiculos'?x.placa+' · '+x.marca:x.nombre}
+            function cell(f,r){const t=f[2],v=r[f[0]];if(t.startsWith('ref:'))return esc(lab(t.slice(4),v));return /^(monto|precio)$/.test(f[0])?'Bs '+Number(v||0).toFixed(2):esc(v)}
+            function opts(f,v){const t=f[2];const o=t.startsWith('ref:')?db[t.slice(4)].map(x=>[x.id,lab(t.slice(4),x.id)]):t.slice(4).split(',').map(x=>[x,x]);return '<option value="">—</option>'+o.map(([k,l])=>`<option value="${esc(k)}"${k==v?' selected':''}>${esc(l)}</option>`).join('')}
+            function inp(f,v,m){const t=f[2];if(t.startsWith('ref:')||t.startsWith('sel:'))return `<select name="${f[0]}" required ${f[0]=='servicio'&&m.f.some(x=>x[0]=='monto')?'onchange="fill(this)"':''}>${opts(f,v)}</select>`;return `<input name="${f[0]}" type="${t}" step="any" value="${esc(v)}" required>`}
+            function fill(s){const p=db.servicios.find(x=>x.id==s.value),m=s.form.elements.monto;if(p&&m&&!m.value)m.value=p.precio}
+            function go(m){S.mod=m;S.q='';S.edit=null;S.err='';render()}
+            async function login(e){e.preventDefault();if(!sb)return render();const f=e.target;const{data,error}=await sb.auth.signInWithPassword({email:f.u.value.trim(),password:f.p.value});if(error){S.err='Correo o contraseña incorrectos';return render()}await entrar(data.user)}
+            async function entrar(user){const{data}=await sb.from('perfiles').select('rol').eq('id',user.id).single();if(!data||!ROL[data.rol]){S.err='Tu usuario no tiene rol asignado';await sb.auth.signOut();return render()}S.u={u:user.email,r:data.rol};S.mod=ROL[data.rol].m[0];await loadAll()}
+            async function logout(){await sb.auth.signOut();S.u=null;S.login=0;render()}
+            function nuevo(){S.edit='new';render()}
+            function editar(id){S.edit=id;render()}
+            function cancelar(){S.edit=null;S.err='';render()}
+            async function guardar(e){e.preventDefault();const m=M[S.mod],fd=new FormData(e.target),o={};m.f.forEach(f=>{let v=fd.get(f[0]).trim();o[f[0]]=f[2]=='number'?+v:v});
+            if(S.mod=='vehiculos'&&db.vehiculos.some(x=>x.placa.toLowerCase()==o.placa.toLowerCase()&&x.id!=S.edit)){S.err='Ya existe un vehículo con esa placa';return render()}
+            if(S.mod=='reservas'&&db.reservas.some(x=>x.fecha==o.fecha&&x.hora==o.hora&&x.estado!='Cancelada'&&o.estado!='Cancelada'&&x.id!=S.edit)&&!confirm('Ya hay una reserva en ese horario. ¿Guardar igual?'))return;
+            const q=S.edit=='new'?sb.from(S.mod).insert(o):sb.from(S.mod).update(o).eq('id',S.edit);const{error}=await q;if(error){S.err=error.message;return render()}S.edit=null;await loadAll()}
+            async function borrar(id){if(!confirm('¿Eliminar este registro?'))return;const{error}=await sb.from(S.mod).delete().eq('id',id);await loadAll();if(error){S.err=error.message;render()}}
+            function buscar(v){S.q=v;render();const i=document.getElementById('q');i.focus();i.setSelectionRange(v.length,v.length)}
+            async function loadPub(){const{data}=await sb.from('servicios').select('*').order('precio');if(data)db.servicios=data;render()}
+            function irLogin(v){S.login=v;S.err='';render()}
+            async function reservar(e){e.preventDefault();const f=e.target,m=document.getElementById('rmsg'),g=n=>f.elements[n].value;if(!sb){m.className='err';m.textContent=CFG_ERR||'Sin conexión';return}
+            m.className='mut';m.textContent='Enviando…';
+            const{error}=await sb.rpc('reservar_publico',{p_nombre:g('nombre'),p_telefono:g('telefono'),p_placa:g('placa'),p_marca:g('marca'),p_tipo:g('tipo'),p_servicio:g('servicio'),p_fecha:g('fecha'),p_hora:g('hora')});
+            if(error){m.className='err';m.textContent=error.message;return}
+            m.className='ok';m.textContent='✅ ¡Reserva enviada! Te esperamos el '+g('fecha')+' a las '+g('hora')+'. Quedó como Pendiente hasta que la confirmemos.';f.reset()}
+            function ir(id){document.getElementById(id).scrollIntoView({behavior:'smooth'})}
+            function guardarCfg(e){e.preventDefault();const f=e.target;try{localStorage.setItem('lav_cfg',JSON.stringify({URL:f.url.value.trim(),KEY:f.key.value.trim()}))}catch(x){}location.reload()}
+            function viewHome(){const sv=db.servicios,nc=SUPA_URL.includes('TU-PROYECTO');
+            return `<div class="top"><b>🚗 Lavanderías Carapari</b><div><a href="#inicio">Inicio</a><a href="#servicios">Servicios</a><button class="p" onclick="ir('res')">Reservar</button><button onclick="irLogin(1)">Ingresar</button></div></div>
+            <div class="hero" id="inicio"><h1>¡Bienvenido a Lavanderías Carapari!</h1><p>Cuidamos tu vehículo para que luzca como nuevo. Reserva tu lavado en línea, sin crear ninguna cuenta.</p><button onclick="ir('res')">Reservar ahora</button><button class="o" onclick="ir('servicios')">Ver servicios</button></div>
+            <main>${nc?`<form class="card" onsubmit="guardarCfg(event)"><h3>⚙️ Conectar con Supabase</h3><p class="mut">Pega los datos de Supabase › Project Settings › API. Para dejarlo fijo para todos, ponlos en el bloque CONFIG del archivo.</p><label>Project URL<input name="url" placeholder="https://xxxx.supabase.co" required></label><label>anon public key<input name="key" required></label><button class="p">Guardar y conectar</button></form>`:''}${CFG_ERR?`<p class="err">${esc(CFG_ERR)}</p>`:''}
+            <div class="feat"><div><span>📅</span><b>Reserva en línea</b></div><div><span>💲</span><b>Precios claros</b></div><div><span>🕒</span><b>Atención a tu hora</b></div></div>
+            <h2 id="servicios">Nuestros servicios</h2><div class="k">${sv.map(x=>`<div><b>${esc(x.nombre)}</b><small>Bs ${Number(x.precio).toFixed(2)} · ${x.duracion} min</small></div>`).join('')||'<p class="mut">Cargando servicios…</p>'}</div>
+            <form id="res" class="card" onsubmit="reservar(event)"><h2>Reservar un lavado</h2><div class="g">
+            <label>Nombre completo<input name="nombre" required></label><label>Teléfono / WhatsApp<input name="telefono" type="tel" required></label>
+            <label>Placa del vehículo<input name="placa" required></label><label>Marca / modelo<input name="marca" required></label>
+            <label>Tipo de vehículo<select name="tipo" required><option>Auto</option><option>Camioneta</option><option>Minibús</option><option>Moto</option><option>Camión</option></select></label>
+            <label>Servicio<select name="servicio" required><option value="">—</option>${sv.map(x=>`<option value="${esc(x.id)}">${esc(x.nombre)} — Bs ${Number(x.precio).toFixed(2)}</option>`).join('')}</select></label>
+            <label>Fecha<input name="fecha" type="date" min="${today()}" required></label><label>Hora<input name="hora" type="time" required></label></div>
+            <div id="rmsg" class="mut"></div><button class="p">Enviar reserva</button></form></main><footer>© Lavanderías Carapari · Carapari, Tarija</footer>`}
+            function viewLogin(){return `<form class="card lg" onsubmit="login(event)"><h2>🚗 Lavanderías Carapari</h2><p class="mut">Sistema de registro y control de lavado de autos</p><label>Correo<input name="u" type="email" required autofocus></label><label>Contraseña<input name="p" type="password" required></label><div class="err">${esc(CFG_ERR||(SUPA_URL.includes('TU-PROYECTO')?'Falta configurar SUPA_URL y SUPA_KEY dentro del archivo.':'')||S.err)}</div><button class="p" style="width:100%">Ingresar</button><button type="button" style="width:100%;margin-top:8px" onclick="irLogin(0)">← Volver al inicio</button></form>`}
+            function viewForm(m){const r=S.edit=='new'?{}:db[S.mod].find(x=>x.id==S.edit);
+            const miss=m.f.find(f=>f[2].startsWith('ref:')&&!db[f[2].slice(4)].length);
+            return `<form class="card" onsubmit="guardar(event)"><h3>${S.edit=='new'?'Nuevo registro':'Editar registro'}</h3>${miss?`<p class="err">Primero registra datos en “${M[miss[2].slice(4)].t}”.</p>`:''}<div class="g">${m.f.map(f=>`<label>${f[1]}${inp(f,r[f[0]]??(f[2]=='date'?today():''),m)}</label>`).join('')}</div><div class="err">${esc(S.err)}</div><button class="p">Guardar</button> <button type="button" onclick="cancelar()">Cancelar</button></form>`}
+            function viewMod(){const m=M[S.mod],q=S.q.toLowerCase(),R=ROL[S.u.r];
+            const rows=[...db[S.mod]].reverse().filter(r=>!q||m.f.map(f=>cell(f,r)).join(' ').toLowerCase().includes(q));
+            return (S.edit?viewForm(m):(S.err?`<p class="err">${esc(S.err)}</p>`:''))+`<div class="card"><h3>${m.t} <span class="mut">(${rows.length})</span></h3><div class="bar"><input id="q" placeholder="Buscar…" value="${esc(S.q)}" oninput="buscar(this.value)"><button class="p" onclick="nuevo()">+ Nuevo</button></div><div class="w"><table><tr>${m.f.map(f=>`<th>${f[1]}</th>`).join('')}<th></th></tr>${rows.map(r=>`<tr>${m.f.map(f=>`<td>${cell(f,r)}</td>`).join('')}<td><button onclick="editar('${r.id}')">Editar</button> ${R.del?`<button class="d" onclick="borrar('${r.id}')">Eliminar</button>`:''}</td></tr>`).join('')||`<tr><td colspan="9" class="mut">Sin registros</td></tr>`}</table></div></div>`}
+            let RF=today().slice(0,8)+'01',RT=today();
+            function rng(v,k){if(k)RT=v;else RF=v;render()}
+            function viewRep(){const inR=r=>r.fecha>=RF&&r.fecha<=RT,P=db.pagos.filter(inR),T=db.trabajos.filter(inR),Rs=db.reservas.filter(inR),tot=P.reduce((a,b)=>a+b.monto,0);
+            const grp=(arr,fn)=>{const o={};arr.forEach(p=>{const k=fn(p);o[k]=o[k]||{n:0,s:0};o[k].n++;o[k].s+=p.monto});return Object.entries(o)};
+            const tb=(h,a)=>`<div class="card w"><table><tr><th>${h}</th><th>Cantidad</th><th>Ingresos</th></tr>${a.map(([k,v])=>`<tr><td>${esc(k)}</td><td>${v.n}</td><td>Bs ${v.s.toFixed(2)}</td></tr>`).join('')||'<tr><td class="mut">Sin datos</td></tr>'}</table></div>`;
+            return `<div class="card"><h3>Reportes</h3><div class="g"><label>Desde<input type="date" value="${RF}" onchange="rng(this.value,0)"></label><label>Hasta<input type="date" value="${RT}" onchange="rng(this.value,1)"></label></div><button onclick="print()">🖨 Imprimir</button></div>
+            <div class="k"><div><small>Ingresos</small><b>Bs ${tot.toFixed(2)}</b></div><div><small>Pagos</small><b>${P.length}</b></div><div><small>Servicios realizados</small><b>${T.filter(t=>t.estado!='En proceso').length}</b></div><div><small>En proceso</small><b>${T.filter(t=>t.estado=='En proceso').length}</b></div><div><small>Reservas</small><b>${Rs.length}</b></div><div><small>Pendientes</small><b>${Rs.filter(r=>r.estado=='Pendiente').length}</b></div></div>
+            ${tb('Ingresos por servicio',grp(P,p=>lab('servicios',p.servicio)))}${tb('Ingresos por método de pago',grp(P,p=>p.metodo))}${tb('Ingresos por cliente',grp(P,p=>lab('clientes',p.cliente)))}`}
+            function render(){const a=document.getElementById('app');if(!S.u){a.innerHTML=S.login?viewLogin():viewHome();return}
+            const R=ROL[S.u.r];a.innerHTML=`<header><b>🚗 Lavanderías Carapari</b><span>${esc(S.u.u)} (${S.u.r}) <button onclick="logout()">Salir</button></span></header><nav>${R.m.map(m=>`<button class="${m==S.mod?'on':''}" onclick="go('${m}')">${m=='reportes'?'Reportes':M[m].t}</button>`).join('')}</nav><main>${S.mod=='reportes'?viewRep():viewMod()}</main>`}
+            render();if(sb)sb.auth.getSession().then(async({data})=>{if(data.session)await entrar(data.session.user);else loadPub()});
+        </script>
+    </body>
+</html>
