@@ -300,13 +300,13 @@
         <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
         <script>
             // === CONFIGURA AQUÍ TU PROYECTO SUPABASE (Project Settings > API) ===
-            const CONFIG={URL:'https://zdhufihuplxqrhaauqjn.supabase.co',KEY:'sb_publishable_vMb6dlCr2b_BSkS8vejzcg_4yZOTwQx'};
+            const CONFIG={URL:'https://exyulvowedzpzobhdrnw.supabase.co',KEY:'sb_publishable_-scm9sfeY3qlRbp2Y9rYnw_oOC0il1v'};
             let LS={};try{LS=JSON.parse(localStorage.getItem('lav_cfg'))||{}}catch(e){}
             const SUPA_URL=LS.URL||CONFIG.URL,SUPA_KEY=LS.KEY||CONFIG.KEY;
             let sb=null,CFG_ERR='';try{sb=supabase.createClient(SUPA_URL,SUPA_KEY)}catch(e){CFG_ERR='No se pudo cargar Supabase ('+e.message+'). Revisa tu internet y los valores de SUPA_URL y SUPA_KEY.'}
             const M={
             clientes:{t:'Clientes',f:[['nombre','Nombre','text'],['ci','CI / NIT','text'],['telefono','Teléfono','tel'],['email','Correo','email']]},
-            vehiculos:{t:'Vehículos',f:[['placa','Placa','text'],['marca','Marca / modelo','text'],['tipo','Tipo','sel:Auto,Camioneta,Minibús,Moto,Camión'],['cliente','Cliente','ref:clientes']]},
+            vehiculos:{t:'Vehículos',f:[['placaaaa','Placa','text'],['marca','Marca / modelo','text'],['tipo','Tipo','sel:Auto,Camioneta,Minibús,Moto,Camión'],['cliente','Cliente','ref:clientes']]},
             servicios:{t:'Servicios',f:[['nombre','Servicio','text'],['precio','Precio (Bs)','number'],['duracion','Duración (min)','number']]},
             reservas:{t:'Reservas',f:[['cliente','Cliente','ref:clientes'],['vehiculo','Vehículo','ref:vehiculos'],['servicio','Servicio','ref:servicios'],['fecha','Fecha','date'],['hora','Hora','time'],['estado','Estado','sel:Pendiente,Confirmada,Cancelada,Atendida']]},
             trabajos:{t:'Servicios realizados',f:[['vehiculo','Vehículo','ref:vehiculos'],['servicio','Servicio','ref:servicios'],['fecha','Fecha','date'],['empleado','Atendido por','text'],['estado','Estado','sel:En proceso,Terminado,Entregado']]},
@@ -346,7 +346,7 @@
             function guardarCfg(e){e.preventDefault();const f=e.target;try{localStorage.setItem('lav_cfg',JSON.stringify({URL:f.url.value.trim(),KEY:f.key.value.trim()}))}catch(x){}location.reload()}
             function viewHome(){const sv=db.servicios,nc=SUPA_URL.includes('TU-PROYECTO');
             return `<div class="top"><b>🚗 Lavanderías Carapari</b><div><a href="#inicio">Inicio</a><a href="#servicios">Servicios</a><button class="p" onclick="ir('res')">Reservar</button><button onclick="irLogin(1)">Ingresar</button></div></div>
-            <div class="hero" id="inicio"><h1>¡Bienvenido a Lavanderías Carapari!</h1><p>Cuidamos tu vehículo para que luzca como nuevo. Reserva tu lavado en línea, sin crear ninguna cuenta.</p><button onclick="ir('res')">Reservar ahora</button><button class="o" onclick="ir('servicios')">Ver servicios</button></div>
+            <div class="hero" id="inicio"><h1>¡Bienvenido a Lavanderías Carapari tecnologica !</h1><p>Cuidamos tu vehículo para que luzca como nuevo. Reserva tu lavado en línea, sin crear ninguna cuenta.</p><button onclick="ir('res')">Reservar ahora</button><button class="o" onclick="ir('servicios')">Ver servicios</button></div>
             <main>${nc?`<form class="card" onsubmit="guardarCfg(event)"><h3>⚙️ Conectar con Supabase</h3><p class="mut">Pega los datos de Supabase › Project Settings › API. Para dejarlo fijo para todos, ponlos en el bloque CONFIG del archivo.</p><label>Project URL<input name="url" placeholder="https://xxxx.supabase.co" required></label><label>anon public key<input name="key" required></label><button class="p">Guardar y conectar</button></form>`:''}${CFG_ERR?`<p class="err">${esc(CFG_ERR)}</p>`:''}
             <div class="feat"><div><span>📅</span><b>Reserva en línea</b></div><div><span>💲</span><b>Precios claros</b></div><div><span>🕒</span><b>Atención a tu hora</b></div></div>
             <h2 id="servicios">Nuestros servicios</h2><div class="k">${sv.map(x=>`<div><b>${esc(x.nombre)}</b><small>Bs ${Number(x.precio).toFixed(2)} · ${x.duracion} min</small></div>`).join('')||'<p class="mut">Cargando servicios…</p>'}</div>
